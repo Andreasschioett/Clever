@@ -2,4 +2,45 @@
 
 {% block content %}
 
+
+<style> 
+    label {
+        display: block;
+        font: 0.9rem 'Fira Sans', sans-serif;
+    }
+    
+    input[type='submit'],
+    label {
+        margin-top: 1rem;
+    }
+</style>
+
+
+<head>
+    <h1>Profile Information</h1>
+</head>
+<body>
+    
+    <body style="background : #34605C;">
+
+    <div class="profilecontainer">
+        <form>
+            <label for="name">Navn:</label>
+            <input type="text" id="Navn" name="Navn" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="address">Addresse:</label>
+            <textarea id="addresse" name="addresse" rows="1" required></textarea><br>
+
+            <input type="submit" value="Save">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+</body>
+</html>
 {% endblock%}

@@ -235,34 +235,39 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-pale-red,.w3-hover-border-pale-red:hover{border-color:#ffe7e7!important}.w3-border-pale-green,.w3-hover-border-pale-green:hover{border-color:#e7ffe7!important}
 .w3-border-pale-yellow,.w3-hover-border-pale-yellow:hover{border-color:#ffffcc!important}.w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
 
-/* Create a icon bar that stays at bottom of screen  */
+
 .icon-bar {
-    position: fixed; /* Fixed/sticky position */
-    bottom: 0; /* Place the bar at the bottom of the page */
-    width: 100%; /* Full-width */
-    background-color: #555; /* Dark-grey background */
-    overflow: auto; /* Overflow due to float */
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: #555; 
+    overflow: auto; /* hvad gør det her overhovedet*/
 }
 .icon-bar a {
-    float: left; /* Float links side by side */
-    width: 20%; /* Full-width */
-    text-align: center; /* Centered text */
-    padding: 12px 0; /* Add some padding */
-    transition: all 0.3s ease; /* Add transition for hover effects */
-    color: white; /* White text color */
-    font-size: 36px; /* Increase font size */
+    float: left; 
+    width: 20%; 
+    text-align: center; 
+    padding: 6px 0; 
+    color: white; 
+    font-size: 36px; 
 }
-/* changs background colour when you hover over buttons */
 .icon-bar a:hover {
-    background-color: #791f1f; /* Add a hover color */
+    background-color: gray;
 }
-/* ændre på bagrundsfarven på icon baren*/
 .icon-bar {
     background-color: #000;
 }
 .menu_picturecontainer{   
     text-align: center;
     color: white;
+}
+.profilecontainer {
+    text-align: center;
+    color: black;
+    background-color: white;
+    max-width: 200px !important;
+    margin: auto;
+    
 }
 img {
   display: block;

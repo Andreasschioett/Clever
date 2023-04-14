@@ -18,5 +18,16 @@ def Settings():
 def Profile():
     return render_template("Profile.html")
 
+
+@app.route("/Overblik")
+def Overblik():
+    return render_template("Overblik.html")
+
+@app.route("/strømpris")
+def strømpris():
+    return render_template("strømpris.html")
+@app.route("/co2udledning")
+def co2udledning():
+    return render_template("co2udledning.html")
 if __name__ == '__main__':
     app.run(debug=True)

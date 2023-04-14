@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block content%}
+
+
+<style>
+    td, th {
+        padding: 8px;
+        text-align: left;
+    }
+    td:first-child {
+        width: 30%; 
+    }
+</style>
+<!--TD = Table data & TR = table row TH = Table header, first chilkd er det første TH kollone -->
+ 
+<body>
+    <h1>Dummy Data</h1>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Strømpris</th>
+        </tr>
+        <tr>
+            <td>2022-01-01 12:00</td>
+            <td>49.95</td>
+        </tr>
+        <tr>
+            <td>2022-02-03 18:30</td>
+            <td>32.10</td>
+        </tr>
+        <tr>
+            <td>2022-03-15 08:45</td>
+            <td>76.25</td>
+        </tr>
+        <tr>
+            <td>2022-04-22 20:15</td>
+            <td>12.50</td>
+        </tr>
+    </table>
+</body>
+
+{% endblock %}
