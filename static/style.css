@@ -240,7 +240,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     position: fixed; 
     bottom: 0; 
     width: 100%; 
-    background-color: #555; 
+   
     overflow: auto; /* hvad gør det her overhovedet*/
 }
 .icon-bar a {
@@ -274,18 +274,16 @@ img {
   margin: auto;
 } 
 .profile-logo {
-    width: 100px; /* Set desired width */
-    height: 100px; /* Set desired height */
-    background-color: black;
-    border-radius: 50%; /* gør den rund  */
+    width: 100px;
+    height: 100px;
+    background-color: #70748c;
+    border-radius: 50%;
+    font-size: 55px;
+    color: white;
+    margin: 0 auto; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.profile-logo::after {
-    content: "";
-    width: 60px; /* Set desired size of silhouette */
-    height: 60px; /* Set desired size of silhouette */
-    background-color: white; /* Set color of silhouette */
-    border-radius: 50%; /* Create circular shape */
-  }
+
+

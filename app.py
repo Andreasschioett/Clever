@@ -31,11 +31,5 @@ def co2udledning():
     return render_template("co2udledning.html")
 
 
-
-
-
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)
