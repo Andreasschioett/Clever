@@ -273,3 +273,19 @@ img {
   display: block;
   margin: auto;
 } 
+.profile-logo {
+    width: 100px; /* Set desired width */
+    height: 100px; /* Set desired height */
+    background-color: black;
+    border-radius: 50%; /* gør den rund  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-logo::after {
+    content: "";
+    width: 60px; /* Set desired size of silhouette */
+    height: 60px; /* Set desired size of silhouette */
+    background-color: white; /* Set color of silhouette */
+    border-radius: 50%; /* Create circular shape */
+  }
