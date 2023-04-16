@@ -240,14 +240,13 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     position: fixed; 
     bottom: 0; 
     width: 100%; 
-   
     overflow: auto; /* hvad gør det her overhovedet*/
 }
 .icon-bar a {
     float: left; 
     width: 20%; 
     text-align: center; 
-    padding: 6px 0; 
+    padding: 6px; 
     color: white; 
     font-size: 36px; 
 }
@@ -260,19 +259,17 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .menu_picturecontainer{   
     text-align: center;
     color: white;
+    width:  100%; 
+    height: auto;  
 }
 .profilecontainer {
-    text-align: center;
+    text-align: left;
     color: black;
-    background-color: white;
-    max-width: 200px !important;
-    margin: auto;
-    
+    background-color: #90a4a4;
+    max-width: 180px !important;
+    margin: auto;   
 }
-img {
-  display: block;
-  margin: auto;
-} 
+
 .profile-logo {
     width: 100px;
     height: 100px;
@@ -285,5 +282,73 @@ img {
     justify-content: center;
     align-items: center;
 }
+.kortbeskrivelse{
+    text-align: center;
+}
 
-
+img {
+        display: block;
+        margin: auto;
+      } 
+      .switchcontainer{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       color: black !important;
+      }
+      .switch {
+        position: relative;
+        text-align: right;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+      input:checked + .slider {
+        background-color: #2196F3;
+      }
+      input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+      .slider.round {
+        border-radius: 34px;
+      }
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      .box{
+        background : white;
+        width: 10%;
+        height: auto;
+      }

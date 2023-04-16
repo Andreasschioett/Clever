@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def startside():
+    return render_template("menu.html")
 
 @app.route("/menu")
 def menu():
@@ -13,6 +13,11 @@ def menu():
 @app.route("/Settings")
 def Settings():
     return render_template("Settings.html")
+
+
+@app.route("/kort")
+def kort():
+    return render_template("kort.html")
 
 @app.route("/Profile")
 def Profile():
@@ -30,6 +35,9 @@ def strømpris():
 def co2udledning():
     return render_template("co2udledning.html")
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("menu.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
