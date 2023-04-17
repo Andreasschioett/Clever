@@ -11,8 +11,13 @@ dir = os.path.dirname(__file__)
 db = os.path.join(dir, 'Clever.db')
 
 @app.route("/")
-def startside():
-    return render_template("menu.html")
+def srtartside():
+    with sqlite3.connect(db) as conn:
+        c = conn.cursor()  
+        c.execute("SELECT * FROM oplader")
+        oplader = c.fetchall()
+        print(oplader)
+    return render_template("menu.html", oplader=oplader)
 
 @app.route("/menu")
 def menu():
@@ -22,6 +27,7 @@ def menu():
         oplader = c.fetchall()
         print(oplader)
     return render_template("menu.html", oplader=oplader)
+
 
 
 @app.route("/Settings")
@@ -50,10 +56,11 @@ def co2udledning():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("menu.html")
-
-#function that gets the data from clever.db opklader and sends it to the html file
-
+    with sqlite3.connect(db) as conn:
+        c = conn.cursor()  
+        c.execute("SELECT * FROM oplader")
+        oplader = c.fetchall()
+    return render_template("menu.html", oplader=oplader)
 
 
 # DML inset profile data into database in table kunde
@@ -71,8 +78,6 @@ def create():
     return redirect('/')
 
 
-
-
 # DML update oplader udelukende in database in table oplader
 @app.route('/update', methods=['POST'])
 def update():
@@ -83,11 +88,8 @@ def update():
     else:
         new_value = 0
         old_value = 1
-
-    print(new_value)
-    print(solcelle)
     data = (new_value, old_value)
-    print(data)
+   
 
     with sqlite3.connect(db) as conn:
         c = conn.cursor()
