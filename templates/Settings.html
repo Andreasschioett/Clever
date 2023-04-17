@@ -3,7 +3,7 @@
 {% block content %}
 
 <body style="background-color: #34605C">
-
+          
     <div class="switchcontainer">
         <div class="box">
           <div class="row">
@@ -31,12 +31,17 @@
           </div>
       
           <div class="row">
-            <div class="label">Oplad kun via solcelle</div>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-          </div>
-        </div>
+            <form action="/update" method="post">
+              <div class="label">Oplad kun via solcelle</div>
+                <label for="solcelle"></label>
+                <select name="solcelle" id="solcelle">
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+                <br><br> 
+                <input type="submit" value="Submit">
+  
+              </div>
+            </div>
       </div>
 {% endblock %}
