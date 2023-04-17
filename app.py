@@ -1,4 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
+import requests
+import json
+import os
+
 
 app = Flask(__name__)
 
@@ -14,7 +18,6 @@ def menu():
 def Settings():
     return render_template("Settings.html")
 
-
 @app.route("/kort")
 def kort():
     return render_template("kort.html")
@@ -23,7 +26,6 @@ def kort():
 def Profile():
     return render_template("Profile.html")
 
-
 @app.route("/Overblik")
 def Overblik():
     return render_template("Overblik.html")
@@ -31,6 +33,7 @@ def Overblik():
 @app.route("/strømpris")
 def strømpris():
     return render_template("strømpris.html")
+
 @app.route("/co2udledning")
 def co2udledning():
     return render_template("co2udledning.html")
@@ -38,6 +41,9 @@ def co2udledning():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("menu.html")
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
