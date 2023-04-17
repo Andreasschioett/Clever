@@ -16,7 +16,13 @@ def startside():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    with sqlite3.connect(db) as conn:
+        c = conn.cursor()  
+        c.execute("SELECT * FROM oplader")
+        oplader = c.fetchall()
+        print(oplader)
+    return render_template("menu.html", oplader=oplader)
+
 
 @app.route("/Settings")
 def Settings():
@@ -47,14 +53,6 @@ def page_not_found(e):
     return render_template("menu.html")
 
 #function that gets the data from clever.db opklader and sends it to the html file
-@app.route("/data")
-def data():
-    with sqlite3.connect(db) as conn:
-        c = conn.cursor()  
-        c.execute("SELECT * FROM oplader")
-        oplader = c.fetchall()
-        print(oplader)
-    return render_template("data.html", oplader=oplader)
 
 
 
