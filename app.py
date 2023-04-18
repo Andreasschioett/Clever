@@ -3,6 +3,8 @@ import requests
 import json
 import os
 import sqlite3
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
 
 
 app = Flask(__name__)
@@ -11,8 +13,13 @@ dir = os.path.dirname(__file__)
 db = os.path.join(dir, 'Clever.db')
 
 @app.route("/")
-def startside():
-    return render_template("menu.html")
+def srtartside():
+    with sqlite3.connect(db) as conn:
+        c = conn.cursor()  
+        c.execute("SELECT * FROM oplader")
+        oplader = c.fetchall()
+        print(oplader)
+    return render_template("menu.html", oplader=oplader)
 
 @app.route("/menu")
 def menu():
@@ -23,6 +30,10 @@ def menu():
         print(oplader)
     return render_template("menu.html", oplader=oplader)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7c81c8a46c580d264827f2ee959d93e2621ce741
 
 @app.route("/Settings")
 def Settings():
@@ -50,10 +61,18 @@ def co2udledning():
 
 @app.errorhandler(404)
 def page_not_found(e):
+<<<<<<< HEAD
     return render_template("menu.html")
 
 #function that gets the data from clever.db opklader and sends it to the html file
 
+=======
+    with sqlite3.connect(db) as conn:
+        c = conn.cursor()  
+        c.execute("SELECT * FROM oplader")
+        oplader = c.fetchall()
+    return render_template("menu.html", oplader=oplader)
+>>>>>>> 7c81c8a46c580d264827f2ee959d93e2621ce741
 
 
 # DML inset profile data into database in table kunde
@@ -71,8 +90,6 @@ def create():
     return redirect('/')
 
 
-
-
 # DML update oplader udelukende in database in table oplader
 @app.route('/update', methods=['POST'])
 def update():
@@ -83,16 +100,62 @@ def update():
     else:
         new_value = 0
         old_value = 1
-
-    print(new_value)
-    print(solcelle)
     data = (new_value, old_value)
-    print(data)
+   
 
     with sqlite3.connect(db) as conn:
         c = conn.cursor()
         c.execute("UPDATE oplader SET solcelle=? WHERE solcelle=?", data)
     return redirect('/')
+
+query = "https://api.energidataservice.dk/dataset/CO2EmisProg?offset=0&sort=Minutes5UTC%20DESC&timezone=dk"
+response = requests.get(query)
+if response.status_code == 200:
+    tidspunkter = []
+    co2= []
+    for x in response.json()['records']:
+        tidspunkter.append(x['Minutes5DK'])
+        co2.append(x["CO2Emission"])
+    plt.plot(tidspunkter, co2)
+    plt.ylabel('CO udledning')
+    plt.xlabel('Tidspunkt')
+    plt.xticks(rotation=90)
+    plt.ylim(0, max(co2) + 100)
+    plt.xticks(tidspunkter[::5])
+    plt.subplots_adjust(bottom=0.5)
+    plt.savefig('static/Screenshot_2.png')
+    plt.clf()
+else:
+    # Print the error message
+    print("Error: " + response.text)
+
+today = datetime.now()
+tommorrow = today + timedelta(days=1)
+today = today.strftime("%Y-%m-%d")
+tommorrow = tommorrow.strftime("%Y-%m-%d")
+query2 = "https://api.energidataservice.dk/dataset/Elspotprices?offset=0&start=" + str(today) + "&end=" + str(tommorrow) + "&filter=%7B%22PriceArea%22:[%22DK1%22]%7D&sort=HourUTC%20DESC&timezone=dk"
+response2 = requests.get(query2)
+if response2.status_code == 200:
+    tidspunkter2 = []
+    pris = []
+    for x in response2.json()['records']:
+        tidspunkter2.append(x['HourDK'])
+        pris.append(x["SpotPriceDKK"])
+        plt.plot(tidspunkter2, pris)
+        plt.ylabel('pris')
+        plt.xlabel('Tidspunkt')
+        plt.xticks(rotation=90)
+        plt.ylim(0, max(pris) + 100)
+        plt.xticks(tidspunkter2[::2])
+        plt.subplots_adjust(bottom=0.5)
+        plt.savefig('static/Screenshot_1.png')
+        plt.clf()
+    else:
+        # Print the error message
+        print("Error: " + response2.text)
+
+
+
 
 
 
